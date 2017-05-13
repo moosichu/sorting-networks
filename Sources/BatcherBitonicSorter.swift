@@ -45,10 +45,8 @@ struct BatcherBitonicSorter<C: Comparator> {
         var numSorters = 1 << logsize
         for sublogsize in 1...logsize {
             numSorters = numSorters / 2
-            print("creating \(numSorters) mergerSorter of size \(1 << sublogsize)")
             for sorter in 0..<numSorters {
                 let sorterPosition = sorter * (1 << sublogsize)
-                print("creating mergerSorter at \(sorterPosition)")
                 createMergerSorter(at: sorterPosition, logsize: sublogsize)
             }
         }
